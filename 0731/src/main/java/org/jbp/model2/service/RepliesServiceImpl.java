@@ -8,6 +8,7 @@ import org.jbp.model2.dao.RepliesDAO;
 import org.jbp.model2.util.PaginateUtil;
 import org.jbp.model2.vo.PageVO;
 import org.jbp.model2.vo.Reply;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,21 +17,13 @@ public class RepliesServiceImpl implements
 RepliesService{
 	
 
+	@Autowired
 	private RepliesDAO repliesDAO;
+	@Autowired
 	private ArticlesDAO articlesDAO;
+	@Autowired
 	private PaginateUtil paginateUtil;
 	
-	
-	public void setArticlesDAO(ArticlesDAO articlesDAO) {
-		this.articlesDAO = articlesDAO;
-	}
-	public void setPaginateUtil(PaginateUtil paginateUtil) {
-		this.paginateUtil = paginateUtil;
-	}
-	
-	public void setRepliesDAO(RepliesDAO repliesDAO) {
-		this.repliesDAO = repliesDAO;
-	}
 	
 	@Override
 	public Map<String, Object> getReplies(int articleNo, int pageNo) {

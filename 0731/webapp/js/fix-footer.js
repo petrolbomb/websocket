@@ -7,7 +7,7 @@ function fixFooter() {
     console.log(bHeight);
 
     if($footer.hasClass("fixed")) {
-        bHeight += 150;
+        bHeight += 120;
     }
 
     if(wHeight>=bHeight) {

@@ -2,17 +2,15 @@ package org.jbp.model2.service;
 
 import org.jbp.model2.dao.UsersDAO;
 import org.jbp.model2.vo.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsersServiceImpl implements
 UsersService{
 	
+	@Autowired
 	private UsersDAO usersDAO;
-	
-	public void setUsersDAO(UsersDAO usersDAO) {
-		this.usersDAO = usersDAO;
-	}
 	
 	@Override
 	public User login(User user) {
@@ -38,6 +36,11 @@ UsersService{
 	@Override
 	public void join(User user) {
 		usersDAO.insert(user);
+	}
+	
+	@Override
+	public User getOne(String no) {
+		return usersDAO.selectOne(no);
 	}
 
 }

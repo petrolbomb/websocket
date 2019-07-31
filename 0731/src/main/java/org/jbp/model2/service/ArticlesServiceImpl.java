@@ -8,6 +8,7 @@ import org.jbp.model2.dao.RepliesDAO;
 import org.jbp.model2.util.PaginateUtil;
 import org.jbp.model2.vo.Article;
 import org.jbp.model2.vo.PageVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,22 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class ArticlesServiceImpl 
 implements ArticlesService {
 	
+	@Autowired
 	private ArticlesDAO articlesDAO;
+	@Autowired
 	private RepliesDAO repliesDAO;
-	
-	public void setRepliesDAO(RepliesDAO repliesDAO) {
-		this.repliesDAO = repliesDAO;
-	}
-	
-	public void setArticlesDAO(ArticlesDAO articlesDAO) {
-		this.articlesDAO = articlesDAO;
-	}
-	
+	@Autowired
 	private PaginateUtil paginateUtil;
 	
-	public void setPaginateUtil(PaginateUtil paginateUtil) {
-		this.paginateUtil = paginateUtil;
-	}
 	
 	@Override
 	public Map<String, Object> getPageList(int page, int numPage) {

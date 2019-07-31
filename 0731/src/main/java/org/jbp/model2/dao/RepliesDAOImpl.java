@@ -5,16 +5,14 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.jbp.model2.vo.PageVO;
 import org.jbp.model2.vo.Reply;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepliesDAOImpl implements RepliesDAO {
 
+	@Autowired
 	private SqlSession session;
-	
-	public void setSession(SqlSession session) {
-		this.session = session;
-	}
 	
 	@Override
 	public List<Reply> selectList(PageVO pageVO) {

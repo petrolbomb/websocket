@@ -1,5 +1,8 @@
 package org.jbp.model2.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PaginateUtil {
 
 	public String getPaginate(int pageNo, int total, int numPage, int numBlock, String url, String param) {

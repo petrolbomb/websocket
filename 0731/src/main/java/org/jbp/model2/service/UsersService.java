@@ -12,4 +12,6 @@ public interface UsersService {
 
 	public void join(User user);
 
+	public User getOne(String no);
+
 }

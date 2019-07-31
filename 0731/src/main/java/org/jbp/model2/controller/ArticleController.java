@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.jbp.model2.service.ArticlesService;
 import org.jbp.model2.vo.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,16 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ArticleController {
 	
+	@Autowired
 	private ArticlesService service;
 	
 	public void setService(ArticlesService service) {
 		this.service = service;
-	}
-	
-	@RequestMapping(value="/article",
-			method=RequestMethod.GET)
-	public String asdfs() {
-		return "ajaxIndex";
 	}
 	
 	@RequestMapping(value="/article/write",
@@ -52,8 +48,6 @@ public class ArticleController {
 		
 		return "redirect:/";
 	}//
-			
-			
 	
 	@RequestMapping(value="/article/{no}",
 			method=RequestMethod.GET)
@@ -78,11 +72,8 @@ public class ArticleController {
 		
 		model.addAttribute("article",service.getDetail(no,isHit));
 		
-		
 		return "article";
 	}
-	
-	
 	
 	
 	@RequestMapping(value={"/","/index"},
@@ -91,17 +82,22 @@ public class ArticleController {
 		
 		return "index";
 	}
-	
-	@RequestMapping(value="/index/size/{size}/page/{page}",
-			method=RequestMethod.GET)
-	public String asdfasdfsadf(Model model,
-			@PathVariable int page, 
-		@PathVariable int size) {
-		
-		model.addAllAttributes(service.getPageList(page, size));
-		
-		return "index";
+
+	@RequestMapping(value="/article",method=RequestMethod.GET)
+	public String article() {
+		return "main";
 	}
+	
+	@RequestMapping(value="/article/size/{size}/page/{page}",method=RequestMethod.GET)
+	public String article2(@PathVariable int size, @PathVariable int page) {
+		
+		System.out.println("GET /article/size/{size}/page/{page}");
+		System.out.println(size);
+		System.out.println(page);
+		return "main";
+	}
+	
+	
 	
 	@RequestMapping(value="/article",
 			method=RequestMethod.POST)
@@ -120,7 +116,5 @@ public class ArticleController {
 		
 		return "redirect:/article/"+article.getNo();
 	}
-	
-	
 	
 }

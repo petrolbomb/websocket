@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+#size {
+	position: absolute;
+	right:0;
+	top:20px;
+	font: 18px "Kakao","Noto Sans KR","나눔고딕",NanumGothic,"맑은고딕","Malgun Gothic","돋움",Dotum,"Helvetica Neue",Helvetica,AppleSDGothicNeo,sans-serif,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Segoe UI Symbol","Android Emoji",EmojiSymbols;
+	padding:5px 10px;
+	color:#424242;
+}
+
+#articleList {
+	width: 1080px;
+	margin: 10px auto;
+}
+
+.article {
+	border-bottom: 1px solid #e6e7e7;
+	margin: 10px 0;
+}
+
+.article a {
+	display: block;
+	height: 140px;
+	position: relative;
+}
+
+.article a:hover {
+	background: #e6e7e7;
+}
+
+.article .title {
+	position: absolute;
+	left: 140px;
+	line-height: 140px;
+	font-size: 24px;
+	color: #676767;
+	width: 820px;
+	white-space: nowrap;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.article a:hover .title {
+	color: #14bab6;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.article time {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	font-size: 20px;
+}
+
+.article .hit {
+	position: absolute;
+	color: #9E9E9E;
+	bottom: 22px;
+	left: 150px;
+}
+
+.article .comment {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	font-size: 20px;
+	color: #14bab6;
+}
+
+.article .title span {
+	vertical-align: middle;
+}
+
+.box_btn {
+	width: 1100px;
+}
+
+.no_article {
+	text-align: center;
+	font-size: 28px;
+	height: 200px;
+	line-height: 200px;
+}
+
+.btn_like {
+	position: absolute;
+	left: 200px;
+	bottom: 17px;
+	width: 90px;
+	height: 30px;
+	border: none;
+	font-size: 20px;
+	background: transparent;
+	cursor: pointer;
+	color: #9E9E9E;
+	line-height: 30px;
+	text-align: center;
+}
+
+.btn_like i {
+	color: red;
+	vertical-align: middle;
+}
+
+.btn_like .far {
+	display: inline;
+}
+
+.btn_like.like .far {
+	display: none;
+}
+
+.btn_like .fas {
+	display: none;
+}
+
+.btn_like.like .fas {
+	display: inline;
+}
+
+.num_like {
+	font-size: 18px;
+	vertical-align: middle;
+}

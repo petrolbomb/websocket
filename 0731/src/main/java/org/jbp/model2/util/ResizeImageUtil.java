@@ -9,9 +9,12 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+import org.springframework.stereotype.Component;
+
 import com.mortennobel.imagescaling.AdvancedResizeOp;
 import com.mortennobel.imagescaling.MultiStepRescaleOp;
 
+@Component
 public class ResizeImageUtil {
 	
 	//원본이미지를 크기에 맞게 다시 이미지를

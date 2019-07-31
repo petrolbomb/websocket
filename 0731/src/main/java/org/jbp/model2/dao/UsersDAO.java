@@ -12,4 +12,6 @@ public interface UsersDAO {
 
 	public int selectCheckNickname(String nickname);
 
+	public User selectOne(String no);
+
 }

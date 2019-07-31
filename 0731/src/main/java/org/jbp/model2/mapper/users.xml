@@ -14,6 +14,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND password = #{password}
 	</select>
 	
+	
+	<select id="selectOne"
+	resultType="User">
+		SELECT no, id, password, nickname,
+		regdate, birth_date birthDate, profile
+		FROM users
+		WHERE no=#{no}
+	</select>
+	
 	<insert id="insert" parameterType="User">
 		INSERT INTO users(no, id, password,
 		 nickname, regdate, birth_date, profile)

@@ -3,6 +3,9 @@ package org.jbp.model2.util;
 import java.io.File;
 import java.io.IOException;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FileRenameUtil {
 	// This method does not need to be synchronized because createNewFile()
 	  // is atomic and used here to mark when a file name is chosen

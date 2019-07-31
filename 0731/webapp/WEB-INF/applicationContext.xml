@@ -5,22 +5,26 @@
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 	<!-- WAS가 설정 커넥션풀(DataSource) 을 jndi lookup -->
 	<jee:jndi-lookup id="dataSource"
 		jndi-name="java:comp/env/jdbc/oracle" />
-	<!-- SqlSessionFactory 설정 -->
 	
 	<!-- 트랜잭션을 annotation으로 -->
 	<tx:annotation-driven/>
+	 
+	 <context:component-scan base-package="org.jbp.model2.*"/>
 	
 	<bean id="transactionManager"
  p:dataSource-ref="dataSource"
   class="org.springframework.jdbc.datasource.DataSourceTransactionManager"/>
-	
 
 	<bean id="sqlSessionFactory" p:dataSource-ref="dataSource"
 		p:configLocation="/WEB-INF/mybatis-config.xml"
@@ -30,34 +34,11 @@
 	<bean id="sqlSession" c:sqlSessionFactory-ref="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionTemplate" />
 
-	<!-- DAO 설정 -->
-	<bean id="articlesDAO" p:session-ref="sqlSession"
-		class="org.jbp.model2.dao.ArticlesDAOImpl" />
-	<bean id="repliesDAO" p:session-ref="sqlSession"
-		class="org.jbp.model2.dao.RepliesDAOImpl" />
-	<bean id="usersDAO" p:session-ref="sqlSession"
-		class="org.jbp.model2.dao.UsersDAOImpl" />
-
-	<!-- Service 설정 -->
-	<bean id="articlesService"
-	 p:articlesDAO-ref="articlesDAO"
-	 p:paginateUtil-ref="paginateUtil"
-	 p:repliesDAO-ref="repliesDAO"
-		class="org.jbp.model2.service.ArticlesServiceImpl" />
-	<bean id="repliesService" p:repliesDAO-ref="repliesDAO"
-	p:paginateUtil-ref="paginateUtil"
-	p:articlesDAO-ref="articlesDAO"
-		class="org.jbp.model2.service.RepliesServiceImpl" />
-	<bean id="usersService" p:usersDAO-ref="usersDAO"
-		class="org.jbp.model2.service.UsersServiceImpl" />
-
-	<!-- Util 설정 -->
-	<bean id="paginateUtil"
-	 class="org.jbp.model2.util.PaginateUtil"/>
-	 <bean id="resizeImageUtil"
-	 class="org.jbp.model2.util.ResizeImageUtil"/>
-	 <bean id="fileRenameUtil"
-	  class="org.jbp.model2.util.FileRenameUtil"/>
+<!-- 
+	 <util:map id="users" 
+	 key-type="java.lang.String" value-type="org.jbp.model2.vo.User" 
+	 map-class="java.util.concurrent.ConcurrentHashMap"/>
+	  -->
 
 </beans>
 

@@ -13,6 +13,7 @@ import org.jbp.model2.util.FileRenameUtil;
 import org.jbp.model2.util.PaginateUtil;
 import org.jbp.model2.util.ResizeImageUtil;
 import org.jbp.model2.vo.Reply;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,35 +25,17 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/ajax")
 public class AjaxController {
 
+	@Autowired
 	private ArticlesService articlesService;
-	
+	@Autowired
 	private RepliesService repliesService;
-	
+	@Autowired
 	private UsersService usersService;
-	
-	public void setUsersService(UsersService usersService) {
-		this.usersService = usersService;
-	}
-	
+	@Autowired
 	private ResizeImageUtil imageUtil;
-	
-	public void setImageUtil(ResizeImageUtil imageUtil) {
-		this.imageUtil = imageUtil;
-	}
-	
+	@Autowired
 	private FileRenameUtil fileRenameUtil;
 	
-	public void setFileRenameUtil(FileRenameUtil fileRenameUtil) {
-		this.fileRenameUtil = fileRenameUtil;
-	}
-	
-	public void setRepliesService(RepliesService repliesService) {
-		this.repliesService = repliesService;
-	}
-	
-	public void setArticlesService(ArticlesService articlesService) {
-		this.articlesService = articlesService;
-	}
 	
 	@RequestMapping(
 			value="article/size/{size}/page/{page}",

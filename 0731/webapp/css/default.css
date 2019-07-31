@@ -53,6 +53,17 @@ a:hover {
 	transform: scale(1.2);
 	color:#14BAB6;
 }
+
+#chatLink {
+	position: absolute;
+	right:220px;
+	font-size:22px;
+	color:#fff;
+}
+#chatLink:hover {
+	color:#14BAB6;
+}
+
 #header img {
 	vertical-align: middle;
 	transform:rotate(0deg);
@@ -70,6 +81,69 @@ a:hover {
 }
 #header h1>a:hover>strong {
 	color:#fff;
+}
+
+#userListWrap {
+	position:absolute;
+	top:0px;
+	right:-200px;
+	width:200px;
+	height: calc(100%);
+	background:rgb(77, 82, 90);
+	transition:.1s ease;
+	line-height: 1em;
+	z-index: 10;
+}
+#userListWrap.open {
+	right:0;
+}
+
+#userListWrap h2 {
+	text-align: center;
+	width:200px;
+	height:30px;
+	font-size:18px;
+	font-weight:bold;
+	color:#fff;
+	position:fixed;
+	right:0;
+	top:80px;
+	line-height:28px;
+	background:rgb(77, 82, 90);
+	cursor: pointer;
+}
+
+#usersNum {
+	font-size:20px;
+	color:rgb(20, 186, 182);
+}
+#userListBox {
+	position:absolute;
+	width:180px;
+	margin:10px 10px 0 10px;
+	height: calc(100% - 40px);
+	bottom:0;
+	background:#fff;
+	overflow-y:scroll;
+}
+
+#userListBox li {
+	margin:5px;
+}
+
+#userListBox img {
+	width:40px;
+	height:40px;
+	border-radius: 60px;
+	 box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	 border:1px solid #424242;
+	 display: inline-block;
+	 vertical-align: middle;
+}
+#userListBox h3 {
+	display: inline-block;
+	line-height:40px;
+	vertical-align: middle;
 }
 
 #logPopup {
@@ -164,8 +238,8 @@ a:hover {
 #footer {
 	width:100%;
 	background:#4D525A;
-	height:150px;
-	line-height: 150px;
+	height:120px;
+	line-height: 120px;
 	text-align: center;
 }
 
