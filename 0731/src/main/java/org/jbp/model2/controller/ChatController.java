@@ -26,13 +26,13 @@ public class ChatController {
 	}
 	
 	@MessageMapping("/hello") // 받는곳
-	@SendToUser(value="/queue/join") // 보내는곳
+	@SendTo(value="/topic/join") // 보내는곳
 	public Map<String, Object> ss(SimpMessageHeaderAccessor accessor) throws Exception {
 		
 		System.out.println("/hello 드러옴!");
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
-		
+		map.put("size",users.size());
 		map.put("sessionId",accessor.getSessionId());
 		map.put("users",users);
 		

@@ -1,7 +1,7 @@
 package org.jbp.model2.listener;
 
 import java.util.Map;
-
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.jbp.model2.service.UsersService;
 import org.jbp.model2.vo.User;
@@ -48,8 +48,13 @@ public class StompListener {
 		//System.out.println(accessor.getUser().getName());
 		
 		//template.convertAndSend("/topic/user/list",users);
+
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
-		template.convertAndSend("/topic/join",user);
+		map.put("user",user);
+		map.put("size",users.size());
+		
+		//template.convertAndSend("/topic/join",map);
 		
 	}
 	
@@ -65,7 +70,12 @@ public class StompListener {
 		
 		System.out.println("유저수 : " + users.size());
 		
-		template.convertAndSend("/topic/leave",user);
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		map.put("user",user);
+		map.put("size",users.size());
+		
+		template.convertAndSend("/topic/leave",map);
 	}
 
 }

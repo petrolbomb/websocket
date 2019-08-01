@@ -60,27 +60,29 @@ function connect(callback) {
 		stompClient.subscribe('/topic/join', function(msg) {
 			console.log('/topic/join');
 			
-			$userList.append(userTmp({user:JSON.parse(msg.body)}));
 			
-			$usersNum.text(parseInt($usersNum.text())+1);
-			/*
-			if($chatList) {
-				$chatList.append(helloTmp(JSON.parse(msg.body)));
-				moveScroll();
-			}
-			*/
+			const json = JSON.parse(msg.body);
+			
+			console.log(json);
+			
+			$userList.append(userTmp({user:json.user}));
+			
+			$usersNum.text(json.size);
+			
 			
 		});
 		
 		stompClient.subscribe('/topic/leave', function(msg) {
 			
-			const user = JSON.parse(msg.body);
-			console.log(user.no);
+			const json = JSON.parse(msg.body);
+			console.log(json);
+			
+			$usersNum.text(json.size);
 			
 			$userList.children().each(function() {
 				
 				console.log(this.dataset.no);
-				if(this.dataset.no==user.no) {
+				if(this.dataset.no==json.user.no) {
 					$(this).remove();
 				}
 			});
@@ -90,7 +92,7 @@ function connect(callback) {
 				moveScroll();
 			}
 			*/
-			$usersNum.text(parseInt($usersNum.text())-1);
+			//$usersNum.text(parseInt($usersNum.text())-1);
 			
 		});
 		
@@ -98,6 +100,8 @@ function connect(callback) {
 			console.log('/user/queue/join');
 			
 			const json = JSON.parse(msg.body);
+			
+			console.log(json);
 			
 			const userKeys =Object.keys(json.users); 
 			
